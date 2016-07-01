@@ -2,6 +2,8 @@ package com.liu.bstong.ui;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.liu.bstong.R;
 import com.liu.bstong.base.BaseActivity;
@@ -9,6 +11,7 @@ import com.liu.bstong.fragment.HomeFragment;
 import com.liu.bstong.fragment.SearchFragment;
 import com.liu.bstong.fragment.MainFragment3;
 import com.liu.bstong.fragment.MoreFragment;
+import com.liu.bstong.util.ToastUtil;
 import com.liu.bstong.util.UIUtils;
 import com.liu.bstong.widget.GradientTab;
 import com.liu.bstong.widget.NoScrollViewPager;
@@ -17,11 +20,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.Window;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 /**
  * 项目名称：BSTong<br>
@@ -32,6 +38,7 @@ import android.widget.LinearLayout;
  * 修改人： <br>
  * 修改时间： <br>
  * 修改备注：
+ * 
  * @version V1.0
  */
 public class MainActivity extends BaseActivity {
@@ -45,19 +52,14 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * 指示器名称
 	 */
-	private String[] TAB_ITEMS = new String[] {
-			"首页", "查询", "发现", "更多"
-	};
+	private String[] TAB_ITEMS = new String[] { "首页", "查询", "发现", "更多" };
 
 	/**
 	 * 指示器图标
 	 */
-	private int[] TAB_ICONS = new int[] {
-			R.drawable.icon_tab_1,
-			R.drawable.icon_tab_2,
-			R.drawable.icon_tab_3,
-			R.drawable.icon_tab_4,
-	};
+	private int[] TAB_ICONS = new int[] { R.drawable.icon_tab_1,
+			R.drawable.icon_tab_2, R.drawable.icon_tab_3,
+			R.drawable.icon_tab_4, };
 
 	private Fragment[] fragments = new Fragment[4];
 
@@ -66,7 +68,8 @@ public class MainActivity extends BaseActivity {
 	 */
 	private GradientTab[] tabs = new GradientTab[4];
 
-	private PagerAdapter mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+	private PagerAdapter mPagerAdapter = new FragmentPagerAdapter(
+			getSupportFragmentManager()) {
 		@Override
 		public Fragment getItem(int i) {
 			return fragments[i];
@@ -80,13 +83,14 @@ public class MainActivity extends BaseActivity {
 
 	private NoScrollViewPager.OnPageChangeListener mOnPageChangeListener = new NoScrollViewPager.OnPageChangeListener() {
 		@Override
-		public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+		public void onPageScrolled(int position, float positionOffset,
+				int positionOffsetPixels) {
 			// 设置tab指示器切换时的渐变效果
 			// positionOffset的值为： 0 --> 1
 			if (positionOffset > 0) {
 				// 按操作的两个指示器
 				GradientTab left = tabs[position];
-				GradientTab right =  tabs[position+1];
+				GradientTab right = tabs[position + 1];
 				// 更改指示器的透明度
 				left.updateTabAlpha(1 - positionOffset);
 				right.updateTabAlpha(positionOffset);
@@ -106,6 +110,7 @@ public class MainActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 		setAlwaysShowOverflowMenu();
 		initDatas();
@@ -115,10 +120,17 @@ public class MainActivity extends BaseActivity {
 	}
 
 	private void initGlobalListener() {
-		
+
 	}
 
 	private void initViews() {
+		RelativeLayout rl_left = (RelativeLayout) findViewById(R.id.rl_left);
+		TextView tv_title = (TextView) findViewById(R.id.tv_title);
+		RelativeLayout rl_right = (RelativeLayout) findViewById(R.id.rl_right);
+		tv_title.setText("百事通");
+		rl_left.setVisibility(View.GONE);
+		rl_right.setVisibility(View.GONE);
+
 		this.lltabs = (LinearLayout) findViewById(R.id.ll_tabs);
 		this.viewPager = (NoScrollViewPager) findViewById(R.id.id_viewpager);
 		this.viewPager.setAdapter(mPagerAdapter);
@@ -138,8 +150,8 @@ public class MainActivity extends BaseActivity {
 	 * 动态创建指示器控件，并添加到容器父控件中
 	 */
 	private void initTabs() {
-		LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
-				0, LinearLayout.LayoutParams.MATCH_PARENT);
+		LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(0,
+				LinearLayout.LayoutParams.MATCH_PARENT);
 		param.weight = 1;
 		int padding = UIUtils.dip2px(5);
 		for (int i = 0; i < 4; i++) {
@@ -165,7 +177,8 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * 指示器切换
 	 *
-	 * @param index 当前显示位置
+	 * @param index
+	 *            当前显示位置
 	 */
 	private void onTabClick(int index) {
 		resetAllTabs();
@@ -185,8 +198,7 @@ public class MainActivity extends BaseActivity {
 	}
 
 	/**
-	 * 总是显示actionbar右边的溢出菜单项，如果不做此设置，
-	 * 默认按下菜单键时，会从界面底部弹出选项菜单
+	 * 总是显示actionbar右边的溢出菜单项，如果不做此设置， 默认按下菜单键时，会从界面底部弹出选项菜单
 	 */
 	private void setAlwaysShowOverflowMenu() {
 		try {
@@ -218,6 +230,40 @@ public class MainActivity extends BaseActivity {
 			}
 		}
 		return super.onMenuOpened(featureId, menu);
+	}
+
+	/**
+	 * 菜单、返回键响应
+	 */
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			exitBy2Click(); // 调用双击退出函数
+		}
+		return false;
+	}
+
+	/**
+	 * 双击退出函数
+	 */
+	private static Boolean isExit = false;
+
+	private void exitBy2Click() {
+		Timer tExit = null;
+		if (isExit == false) {
+			isExit = true; // 准备退出
+			ToastUtil.showBaseToast(this, "再按一次退出程序");
+			tExit = new Timer();
+			tExit.schedule(new TimerTask() {
+				@Override
+				public void run() {
+					isExit = false; // 取消退出
+				}
+			}, 2000); // 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
+		} else {
+			finish();
+			System.exit(0);
+		}
 	}
 
 }

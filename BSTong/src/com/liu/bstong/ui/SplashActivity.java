@@ -12,7 +12,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -34,6 +38,7 @@ public class SplashActivity extends BaseActivity {
 	private int count = 3;
 	/** 时间倒计时 **/
 	private TextView tv_time;
+	private RelativeLayout rl_start;
 	/** 消息码 **/
 	private final static int cur_what = 1;
 
@@ -60,6 +65,9 @@ public class SplashActivity extends BaseActivity {
 					}
 				}
 				break;
+			case 100:
+				enterHome();
+				break;
 			}
 		};
 	};
@@ -71,7 +79,6 @@ public class SplashActivity extends BaseActivity {
 		setContentView(R.layout.activity_splash);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.activity_splash);
 		onCreate();
 	}
 
@@ -99,6 +106,35 @@ public class SplashActivity extends BaseActivity {
 				}
 			}
 		});
+		
+		rl_start=(RelativeLayout) findViewById(R.id.rl_start);
+		//进入start界面,使用渐变动画,透明度动画
+        AlphaAnimation alphaAnimation=new AlphaAnimation(0.3F, 1);
+        alphaAnimation.setDuration(2000);
+        rl_start.startAnimation(alphaAnimation);
+        
+        alphaAnimation.setAnimationListener(new AnimationListener() {
+			@Override
+			public void onAnimationStart(Animation animation) {
+			}
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+			}
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				//动画结束后跳转【2秒】
+				handler.sendEmptyMessageDelayed(100,0);
+			}
+		});
+	}
+	
+	/**
+     * 进入主界面
+     */
+    protected void enterHome() {
+		Intent intent=new Intent(UIUtils.getContext(), MainActivity.class);
+		startActivity(intent);
+		finish();
 	}
 
 }

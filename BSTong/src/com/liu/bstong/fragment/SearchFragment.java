@@ -1,8 +1,6 @@
 package com.liu.bstong.fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +15,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.liu.bstong.R;
 import com.liu.bstong.base.BaseFragment;
 import com.liu.bstong.config.Constants;
+import com.liu.bstong.ui.IdentityActivity;
 import com.liu.bstong.util.UIUtils;
 
 /**
@@ -64,9 +63,10 @@ public class SearchFragment extends BaseFragment  {
 							int position, long id) {
 						Intent intent=new Intent();
 						switch(position){
-							//手机防盗
 							case 0:
-								
+								//身份证查询
+								intent.setClass(UIUtils.getContext(), IdentityActivity.class);
+								startActivity(intent);
 								break;
 							case 1:
 								//通讯卫士

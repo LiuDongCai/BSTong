@@ -1,0 +1,105 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+    
+    <include 
+        layout="@layout/layout_titlebar"/>
+    
+    <RelativeLayout 
+        android:layout_margin="@dimen/margin_size10dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_sizey45dp">
+        
+	   <EditText 
+	       android:id="@+id/et_identity"
+	       android:layout_width="match_parent"
+	       android:layout_height="@dimen/margin_sizey32dp"
+	       android:textSize="@dimen/margin_size13dp"
+	       android:singleLine="true"
+	       android:background="@drawable/button_bg_normal"
+	       android:inputType="number"
+	       android:hint=" 请输入身份证号码"/>
+    
+    </RelativeLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_sizey28dp"
+        android:orientation="horizontal">
+        
+        <View 
+            android:layout_width="@dimen/margin_size8dp"
+            android:layout_height="match_parent"/>
+        <Button 
+            android:id="@+id/bt_msg_query"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bt_button_selector"
+            android:textSize="@dimen/margin_size14dp"
+            android:text="信息查询"/>
+        <View 
+            android:layout_width="@dimen/margin_size8dp"
+            android:layout_height="match_parent"/>
+        <Button 
+            android:id="@+id/bt_reveal_query"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bt_button_selector"
+            android:textSize="@dimen/margin_size14dp"
+            android:text="泄露查询"/>
+        <View 
+            android:layout_width="@dimen/margin_size8dp"
+            android:layout_height="match_parent"/>
+        <Button 
+            android:id="@+id/bt_lose_query"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bt_button_selector"
+            android:textSize="@dimen/margin_size14dp"
+            android:text="挂失查询"/>
+        <View 
+            android:layout_width="@dimen/margin_size8dp"
+            android:layout_height="match_parent"/>
+        
+    </LinearLayout>
+
+	<LinearLayout 
+	    android:id="@+id/ll_result"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:layout_marginLeft="@dimen/margin_size85dp"
+	    android:layout_marginTop="@dimen/margin_size150dp"
+	    android:visibility="gone">
+	    
+	    <TextView 
+	        android:id="@+id/tv_one"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text=""
+	        android:textColor="@color/black"
+	        android:textSize="@dimen/margin_size14dp"/>
+	    <TextView 
+	        android:id="@+id/tv_two"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text=""
+	        android:textColor="@color/black"
+	        android:textSize="@dimen/margin_size14dp"/>
+	    <TextView 
+	        android:id="@+id/tv_three"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text=""
+	        android:textColor="@color/black"
+	        android:textSize="@dimen/margin_size14dp"/>
+	    
+	</LinearLayout>
+    
+</LinearLayout>
