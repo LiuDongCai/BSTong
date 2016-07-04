@@ -107,7 +107,6 @@ public class IdentityActivity extends BaseActivity implements OnClickListener{
 							public void onSuccess(
 									ResponseInfo<String> responseInfo) {
 								try{
-									System.out.println(responseInfo.result);
 									Gson gson=new Gson();
 									IdentityBean identityBean = gson.fromJson(responseInfo.result, IdentityBean.class);
 									if(identityBean!=null){
@@ -154,7 +153,6 @@ public class IdentityActivity extends BaseActivity implements OnClickListener{
 							public void onSuccess(
 									ResponseInfo<String> responseInfo) {
 								try{
-									System.out.println(responseInfo.result);
 									Gson gson=new Gson();
 									IdentityBean identityBean = gson.fromJson(responseInfo.result, IdentityBean.class);
 									if(identityBean!=null){
@@ -193,7 +191,6 @@ public class IdentityActivity extends BaseActivity implements OnClickListener{
 							public void onSuccess(
 									ResponseInfo<String> responseInfo) {
 								try{
-									System.out.println(responseInfo.result);
 									Gson gson=new Gson();
 									IdentityBean identityBean = gson.fromJson(responseInfo.result, IdentityBean.class);
 									if(identityBean!=null){

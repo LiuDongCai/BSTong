@@ -31,6 +31,8 @@ public class Constants {
 	public final static String IP_KEY = "d0512672f542db9a38bd34786b57be1c";
 	/**机器人对话的key From-聚合数据**/
 	public final static String CHAT_KEY = "b5340f06c6f6f89399e5b94267652e11";
+	/**老黃歷的key From-聚合数据**/
+	public final static String CALENDAR_KEY = "84b706c93480349b8f135c30f3a35119";
 	
 	public final static int[] SEARCH_ICON={	R.drawable.icon_identity, R.drawable.icon_calendar, R.drawable.icon_car,
 			R.drawable.icon_phone, R.drawable.icon_ip, R.drawable.icon_tv,

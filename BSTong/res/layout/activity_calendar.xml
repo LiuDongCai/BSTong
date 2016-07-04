@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+    
+    <include 
+        layout="@layout/layout_titlebar"/>
+    
+    <Button
+        android:id="@+id/bt_select_calendar"
+        android:text="选择日期"
+        android:textColor="#77330000"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/margin_size10dp"
+        android:layout_marginLeft="@dimen/margin_size10dp"
+        android:layout_marginRight="@dimen/margin_size10dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_size35dp" 
+        android:background="@drawable/bt_button_selector"/>
+
+	<LinearLayout 
+	    android:id="@+id/ll_result"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:layout_marginTop="@dimen/margin_size40dp"
+	    android:padding="@dimen/margin_size20dp"
+	    android:visibility="visible">
+	    
+	    <TextView 
+	        android:id="@+id/tv_one"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/black"
+	        android:textSize="@dimen/margin_size14dp"/>
+	    <TextView 
+	        android:id="@+id/tv_two"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/black"
+	        android:textSize="@dimen/margin_size14dp"/>
+	    <TextView 
+	        android:id="@+id/tv_three"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/black"
+	        android:textSize="@dimen/margin_size14dp"/>
+	    <TextView 
+	        android:id="@+id/tv_four"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/black"
+	        android:textSize="@dimen/margin_size14dp"/>
+	    <TextView 
+	        android:id="@+id/tv_five"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/black"
+	        android:textSize="@dimen/margin_size14dp"/>
+	    <TextView 
+	        android:id="@+id/tv_six"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/black"
+	        android:textSize="@dimen/margin_size14dp"/>
+	    <TextView 
+	        android:id="@+id/tv_seven"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/black"
+	        android:textSize="@dimen/margin_size14dp"/>
+	    <TextView 
+	        android:id="@+id/tv_eight"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/black"
+	        android:textSize="@dimen/margin_size14dp"/>
+	    <TextView 
+	        android:id="@+id/tv_nine"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/black"
+	        android:textSize="@dimen/margin_size14dp"/>
+	    
+	</LinearLayout>
+    
+</LinearLayout>

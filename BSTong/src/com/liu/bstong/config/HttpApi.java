@@ -20,4 +20,7 @@ public class HttpApi {
 	/**身份证查询的接口   From-聚合数据**/
 	public final static String IDENTITY_LOSE_URL = "http://apis.juhe.cn/idcard/loss";
 	
+	/**老黃歷查询的接口   From-聚合数据**/
+	public final static String IDENTITY_CALENDAR_URL = "http://v.juhe.cn/laohuangli/d";
+	
 }

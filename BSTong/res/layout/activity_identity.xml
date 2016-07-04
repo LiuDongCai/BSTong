@@ -74,29 +74,26 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
 	    android:orientation="vertical"
-	    android:layout_marginLeft="@dimen/margin_size85dp"
-	    android:layout_marginTop="@dimen/margin_size150dp"
+	    android:layout_marginTop="@dimen/margin_size40dp"
+	    android:padding="@dimen/margin_size20dp"
 	    android:visibility="gone">
 	    
 	    <TextView 
 	        android:id="@+id/tv_one"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text=""
 	        android:textColor="@color/black"
 	        android:textSize="@dimen/margin_size14dp"/>
 	    <TextView 
 	        android:id="@+id/tv_two"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text=""
 	        android:textColor="@color/black"
 	        android:textSize="@dimen/margin_size14dp"/>
 	    <TextView 
 	        android:id="@+id/tv_three"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text=""
 	        android:textColor="@color/black"
 	        android:textSize="@dimen/margin_size14dp"/>
 	    

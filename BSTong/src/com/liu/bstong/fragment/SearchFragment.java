@@ -15,6 +15,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.liu.bstong.R;
 import com.liu.bstong.base.BaseFragment;
 import com.liu.bstong.config.Constants;
+import com.liu.bstong.ui.CalendarActivity;
 import com.liu.bstong.ui.IdentityActivity;
 import com.liu.bstong.util.UIUtils;
 
@@ -69,9 +70,9 @@ public class SearchFragment extends BaseFragment  {
 								startActivity(intent);
 								break;
 							case 1:
-								//通讯卫士
-//								intent.setClass(context, BlackNumberActivity.class);
-//								startActivity(intent);
+								//老黄历查询
+								intent.setClass(UIUtils.getContext(), CalendarActivity.class);
+								startActivity(intent);
 								break;
 							case 2:
 								//软件管理
